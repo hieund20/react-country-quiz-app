@@ -1,0 +1,6 @@
+export const SET_DATA = 'set_data'
+export const SET_CAPITAL_QUESTION = 'set_capital_question'
+export const SET_FLAG_QUESTION = 'set_flag_question'
+export const SET_NEXT_QUESTION = 'set_next_question'
+export const SET_SCORE = 'set_score'
+export const SET_CHECK_PASS = 'set_check_pass'
