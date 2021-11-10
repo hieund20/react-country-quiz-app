@@ -4,7 +4,8 @@ import {
     SET_NEXT_QUESTION,
     SET_CAPITAL_QUESTION,
     SET_SCORE,
-    SET_FLAG_QUESTION
+    SET_FLAG_QUESTION,
+    SET_MODE
 } from "./constants"
 
 
@@ -47,6 +48,13 @@ export const setScore = payload => {
 export const setCheckPass = payload => {
     return {
         type: SET_CHECK_PASS,
+        payload
+    }
+}
+
+export const setMode = payload => {
+    return {
+        type: SET_MODE,
         payload
     }
 }

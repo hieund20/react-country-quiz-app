@@ -1,7 +1,25 @@
-.main {
-    width: 40%;
-    margin: 0 auto;
-    &-header {
-        margin-bottom: 2rem;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.app {
+    background-image: url("../src/assets/images/background.png");
+    background-size: contain;
+    height: 100vh;
+    font-family: Poppins, sans-serif;
+
+    padding-top: 2rem;
+
+    & a {
+        text-decoration: none;
+    }
+
+    &-container {
+        border: 1px solid blue;
+        width: 464px;
+        height: 580px;
+        margin: 0 auto;
+
+        &-header {
+            border: 1px solid blue;
+            display: flex;
+        }
     }
 }

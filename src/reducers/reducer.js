@@ -4,7 +4,8 @@ import {
     SET_NEXT_QUESTION,
     SET_SCORE,
     SET_CHECK_PASS,
-    SET_FLAG_QUESTION
+    SET_FLAG_QUESTION,
+    SET_MODE
 } from '../actions/constants'
 
 
@@ -33,6 +34,7 @@ export const initState = {
         ]
     },
     flagQuestion: {
+        flagImage: null,
         questionText: '',
         answerOption: [
             {
@@ -55,7 +57,8 @@ export const initState = {
     },
     nextQuestion: true,
     score: 0,
-    checkPass: true
+    checkPass: true,
+    mode: ''
 }
 
 
@@ -90,6 +93,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 checkPass: action.payload
+            }
+        case SET_MODE:
+            return {
+                ...state,
+                mode: action.payload
             }
         default:
             throw new Error('Invalid action')

@@ -1,13 +1,9 @@
+import { shuffle } from 'lodash';
 import React from 'react';
-import { setScore } from '../../App';
-// import PropTypes from 'prop-types';
 import './style.scss';
 
-// Question.propTypes = {
 
-// };
-
-function Question({ question, onNextQuestion, onStop }) {
+function Question({ question, onNextQuestion, onStop, mode, score }) {
     const { questionText, answerOption } = question
     const title = ['A', 'B', 'C', 'D']
 
@@ -24,15 +20,20 @@ function Question({ question, onNextQuestion, onStop }) {
         }
     }
 
-
     return (
         <div className="question">
+            {
+                mode === 'flag' &&
+                <div>
+                    <img src={question.flagImage} alt="flag" />
+                </div>
+            }
             <div>
                 <span>{questionText}</span>
             </div>
             <div>
                 {
-                    answerOption.map((choice, index) => (
+                    shuffle(answerOption).map((choice, index) => (
                         <div onClick={() => handleClickChosen(choice)}>
                             <div key={index}>
                                 <span>{title[index]} </span>
@@ -41,6 +42,9 @@ function Question({ question, onNextQuestion, onStop }) {
                         </div>
                     ))
                 }
+            </div>
+            <div>
+                <span>{`Question: ${score + 1}`}</span>
             </div>
         </div>
     );
