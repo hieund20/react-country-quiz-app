@@ -1,9 +1,9 @@
 import {
     SET_DATA,
     SET_CAPITAL_QUESTION,
-    SET_NEXT_QUESTION,
+    SET_IS_SHOW_NEXT_QUESTION,
     SET_SCORE,
-    SET_CHECK_PASS,
+    SET_IS_PASS,
     SET_FLAG_QUESTION,
     SET_MODE
 } from '../actions/constants'
@@ -55,9 +55,9 @@ export const initState = {
             }
         ]
     },
-    nextQuestion: true,
+    isShowNextQuestion: true,
     score: 0,
-    checkPass: true,
+    isPass: true,
     mode: ''
 }
 
@@ -79,20 +79,20 @@ const reducer = (state, action) => {
                 ...state,
                 flagQuestion: action.payload
             }
-        case SET_NEXT_QUESTION:
+        case SET_IS_SHOW_NEXT_QUESTION:
             return {
                 ...state,
-                nextQuestion: action.payload
+                isShowNextQuestion: action.payload
             }
         case SET_SCORE:
             return {
                 ...state,
                 score: action.payload
             }
-        case SET_CHECK_PASS:
+        case SET_IS_PASS:
             return {
                 ...state,
-                checkPass: action.payload
+                isPass: action.payload
             }
         case SET_MODE:
             return {

@@ -1,7 +1,7 @@
 import {
-    SET_CHECK_PASS,
+    SET_IS_PASS,
     SET_DATA,
-    SET_NEXT_QUESTION,
+    SET_IS_SHOW_NEXT_QUESTION,
     SET_CAPITAL_QUESTION,
     SET_SCORE,
     SET_FLAG_QUESTION,
@@ -31,9 +31,9 @@ export const setFlagQuestion = payload => {
     }
 }
 
-export const setNextQuestion = payload => {
+export const setIsShowNextQuestion = payload => {
     return {
-        type: SET_NEXT_QUESTION,
+        type: SET_IS_SHOW_NEXT_QUESTION,
         payload
     }
 }
@@ -45,9 +45,9 @@ export const setScore = payload => {
     }
 }
 
-export const setCheckPass = payload => {
+export const setIsPass = payload => {
     return {
-        type: SET_CHECK_PASS,
+        type: SET_IS_PASS,
         payload
     }
 }

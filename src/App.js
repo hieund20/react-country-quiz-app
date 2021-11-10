@@ -9,9 +9,9 @@ import Question from './components/Questions';
 import Result from './components/Result';
 import reducer, { initState } from './reducers/reducer';
 import {
-  setCheckPass,
+  setIsPass,
   setData,
-  setNextQuestion,
+  setIsShowNextQuestion,
   setFlagQuestion,
   setCapitalQuestion,
   setScore,
@@ -19,6 +19,7 @@ import {
 } from './actions/actions';
 import { getRandomNumber } from './utils/utilGetRandomNumber';
 
+import svg_adventure from './assets/images/undraw_adventure_4hum.svg'
 import './App.scss';
 
 
@@ -28,10 +29,11 @@ function App() {
     data,
     capitalQuestion,
     flagQuestion,
-    nextQuestion,
+    isShowNextQuestion,
     score,
-    checkPass,
+    isPass,
     mode } = state
+
 
   //First render, fill all response to data
   useEffect(() => {
@@ -112,28 +114,26 @@ function App() {
 
     }
     console.log('useEffect other run')
-  }, [data, nextQuestion, mode])
+  }, [data, isShowNextQuestion, mode])
 
 
   const handleShowNextQuestion = () => {
-    //Pass current question and show next question
-    dispatch(setNextQuestion(nextQuestion === true ? false : true))
+    dispatch(setIsShowNextQuestion(isShowNextQuestion === true ? false : true))
     //Increase score 
     dispatch(setScore(score + 1))
   }
 
   const handleStopQuiz = () => {
-    dispatch(setCheckPass(false))
+    dispatch(setIsPass(false))
   }
 
   const handleChangeMode = (mode) => {
-    console.log(mode)
     dispatch(setMode(mode))
   }
 
   const handleHomeReset = () => {
     //Hide result screen
-    dispatch(setCheckPass(true))
+    dispatch(setIsPass(true))
     //Reset score
     dispatch(setScore(0))
   }
@@ -141,7 +141,7 @@ function App() {
   return (
     <div className="app">
 
-      <div className="app-container">
+      <div className="app-container --flag">
 
         <Router>
 
@@ -153,7 +153,7 @@ function App() {
             </Link>
             <div>
               <img
-                src="./assets/images/undraw_adventure_4hum 1.svg"
+                src={svg_adventure}
                 alt="adventure" />
             </div>
           </div>
@@ -161,7 +161,7 @@ function App() {
           <Routes>
 
             <Route path="/" element={
-              <div className="main-card">
+              <div className="app-container-menu">
                 <div>
                   <Link to="/capital">
                     <div onClick={() => handleChangeMode('capital')}>
@@ -181,9 +181,9 @@ function App() {
 
             <Route path="/capital" element={
               <>
-                <div className="main-card">
+                <div className="app-container-card">
                   {
-                    checkPass &&
+                    isPass &&
                     <Question
                       question={capitalQuestion}
                       onNextQuestion={handleShowNextQuestion}
@@ -193,9 +193,10 @@ function App() {
                     />
                   }
                   {
-                    !checkPass &&
+                    !isPass &&
                     <Result
                       score={score}
+                      onTryAgain={handleHomeReset}
                     />
                   }
                 </div>
@@ -204,9 +205,9 @@ function App() {
 
             <Route path="/flag" element={
               <>
-                <div className="main-card">
+                <div className="app-container-card --flag">
                   {
-                    checkPass &&
+                    isPass &&
                     <Question
                       question={flagQuestion}
                       onNextQuestion={handleShowNextQuestion}
@@ -216,9 +217,10 @@ function App() {
                     />
                   }
                   {
-                    !checkPass &&
+                    !isPass &&
                     <Result
                       score={score}
+                      onTryAgain={handleHomeReset}
                     />
                   }
                 </div>
@@ -228,9 +230,11 @@ function App() {
           </Routes>
 
         </Router >
-
       </div>
 
+      <div>
+        <span>created by username - devChallenges.io</span>
+      </div>
     </div>
   );
 }
