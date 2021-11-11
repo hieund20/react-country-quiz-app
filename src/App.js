@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _, { shuffle } from 'lodash';
 import { useEffect, useReducer } from 'react';
 import {
   BrowserRouter as Router, Routes, Route, Link
@@ -138,6 +138,9 @@ function App() {
     dispatch(setScore(0))
   }
 
+
+  //Shuffle answer option before pass to child component
+
   return (
     <div className="app">
 
@@ -185,7 +188,8 @@ function App() {
                   {
                     isPass &&
                     <Question
-                      question={capitalQuestion}
+                      questionText={capitalQuestion.questionText}
+                      answerOption={shuffle(capitalQuestion.answerOption)}
                       onNextQuestion={handleShowNextQuestion}
                       onStop={handleStopQuiz}
                       mode={mode}
@@ -209,7 +213,9 @@ function App() {
                   {
                     isPass &&
                     <Question
-                      question={flagQuestion}
+                      flagImage={flagQuestion.flagImage}
+                      questionText={flagQuestion.questionText}
+                      answerOption={shuffle(flagQuestion.answerOption)}
                       onNextQuestion={handleShowNextQuestion}
                       onStop={handleStopQuiz}
                       mode={mode}

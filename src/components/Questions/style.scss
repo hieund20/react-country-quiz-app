@@ -59,11 +59,25 @@
             }
 
             //SET TRUE/FALSE BACKGROUND
-            &.--true {
+            &.true {
                 background: #60bf88;
+                border: none;
+                & > div {
+                    // border: 1px solid #2f527b;
+                    & span {
+                        color: #ffffff;
+                    }
+                }
             }
-            &.--false {
+            &.false {
                 background: #ea8282;
+                border: none;
+                & > div {
+                    // border: 1px solid #2f527b;
+                    & span {
+                        color: #ffffff;
+                    }
+                }
             }
         }
     }
@@ -99,6 +113,10 @@
 
         &:hover {
             background: #ffa30f;
+        }
+
+        &.--hidden {
+            visibility: hidden;
         }
     }
 

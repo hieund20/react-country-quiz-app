@@ -1,20 +1,28 @@
-import { shuffle } from 'lodash';
 import React, { useState } from 'react';
 import './style.scss';
 
 
-function Question({ question, onNextQuestion, onStop, mode, score }) {
-    const { questionText, answerOption } = question
+function Question(props) {
+    const {
+        flagImage,
+        questionText,
+        answerOption,
+        onNextQuestion,
+        onStop,
+        mode,
+        score } = props
     const title = ['A', 'B', 'C', 'D']
+    const [checked, setChecked] = useState(-1)
     const [verification, setVerification] = useState('')
 
 
-    const handleClickChosen = (choice) => {
+    const handleClickNext = () => {
         if (!onNextQuestion) return
 
         //TRUE
-        if (choice.isCorrect) {
+        if (verification === 'true') {
             onNextQuestion()
+            setVerification('')
         }
         //FALSE
         else {
@@ -22,9 +30,9 @@ function Question({ question, onNextQuestion, onStop, mode, score }) {
         }
     }
 
-    const handleCheckAnswer = (choice) => {
-        console.log(choice)
-        //TRUE
+    const handleCheckAnswer = (choice, index) => {
+        setChecked(index)
+        // TRUE
         if (choice.isCorrect) {
             setVerification('true')
         }
@@ -39,7 +47,7 @@ function Question({ question, onNextQuestion, onStop, mode, score }) {
             {
                 mode === 'flag' &&
                 <div className="question-flag">
-                    <img src={question.flagImage} alt="flag" />
+                    <img src={flagImage} alt="flag" />
                 </div>
             }
             <div className="question-text">
@@ -47,13 +55,28 @@ function Question({ question, onNextQuestion, onStop, mode, score }) {
             </div>
             <div className="question-options">
                 {
-                    shuffle(answerOption).map((choice, index) => (
+                    answerOption.map((choice, index) => (
                         <div
-                            className={`question-options-choice --${verification}`}
-                            onClick={() => handleCheckAnswer(choice)}>
+                            className={`question-options-choice ${index === checked ? verification : ''}`}
+                            onClick={() => handleCheckAnswer(choice, index)}
+                            style={{
+                                backgroundColor: (verification === 'false' && choice.isCorrect === true) ? '#60bf88' : '',
+                                border: (verification === 'false' && choice.isCorrect === true) ? 'none' : '',
+                                pointerEvents: verification !== '' ? 'none' : ''
+                            }}>
                             <div key={index}>
-                                <span>{title[index]} </span>
-                                <span>{choice.answerText}</span>
+                                <span
+                                    style={{
+                                        color: (verification === 'false' && choice.isCorrect === true) ? '#ffffff' : '',
+                                    }}>
+                                    {title[index]}
+                                </span>
+                                <span
+                                    style={{
+                                        color: (verification === 'false' && choice.isCorrect === true) ? '#ffffff' : '',
+                                    }}>
+                                    {choice.answerText}
+                                </span>
                             </div>
                         </div>
                     ))
@@ -62,7 +85,9 @@ function Question({ question, onNextQuestion, onStop, mode, score }) {
             <div className="question-number">
                 <span>{`Question: ${score + 1}`}</span>
             </div>
-            <div className="question-next">
+            <div
+                className={`question-next ${verification === '' ? '--hidden' : ''}`}
+                onClick={() => handleClickNext()}>
                 <div>
                     <span>Next</span>
                 </div>
@@ -72,3 +97,4 @@ function Question({ question, onNextQuestion, onStop, mode, score }) {
 }
 
 export default Question;
+
