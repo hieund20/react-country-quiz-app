@@ -23,6 +23,7 @@
             justify-content: space-between;
             position: relative;
             & > a {
+                width: 60%;
                 & > div {
                     & > span {
                         font-style: normal;
@@ -35,9 +36,13 @@
                 }
             }
             & > div {
-                position: absolute;
-                right: 0;
-                left: auto;
+                // border: 1px solid blue;
+                width: 40%;
+                & > img {
+                    position: absolute;
+                    right: 0;
+                    left: auto;
+                }
             }
         }
 
@@ -96,7 +101,7 @@
         }
 
         &.--flag {
-            border: 1px solid black;
+            // border: 1px solid black;
             height: 750px;
         }
 
@@ -109,12 +114,89 @@
         }
 
         &-card.--flag {
-            border: 1px solid black;
+            // border: 1px solid black;
             height: 695px;
             background: #ffffff;
             border-radius: 24px;
             display: flex;
             align-items: center;
+        }
+    }
+
+    &-footer {
+        margin-top: 2rem;
+        // border: 1px solid black;
+        text-align: center;
+        & > span {
+            color: #f2f2f2;
+            & > a {
+                color: #ffffff;
+                text-decoration: underline;
+                cursor: pointer;
+                &:visited {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app {
+        &-container {
+            width: 90%;
+            &-header {
+                // border: 1px solid blue;
+                & > a {
+                    // border: 1px solid blue;
+                    width: 80%;
+                    & > div {
+                        & > span {
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .app {
+        &-container {
+            width: 90%;
+            &-header {
+                // border: 1px solid blue;
+                & > a {
+                    // border: 1px solid blue;
+                    width: 80%;
+                    & > div {
+                        & > span {
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .app {
+        &-container {
+            width: 90%;
+            &-header {
+                // border: 1px solid blue;
+                & > a {
+                    // border: 1px solid blue;
+                    width: 80%;
+                    & > div {
+                        & > span {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

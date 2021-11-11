@@ -77,6 +77,26 @@ function Question(props) {
                                     }}>
                                     {choice.answerText}
                                 </span>
+                                <span
+                                    className="material-icons"
+                                    id={`false-checked-${index === checked && verification === 'false' ? 'active' : 'none'}`}
+                                    style={{
+                                        color: (verification === 'false' && choice.isCorrect === true) ? '#ffffff' : '',
+                                    }}
+                                >
+                                    highlight_off
+                                </span>
+                                <span
+                                    className="material-icons"
+                                    id={`true-checked-${index === checked && verification === 'true' ? 'active' : 'none'}`}
+                                    style={
+                                        {
+                                            display: (verification === 'false' && choice.isCorrect === true) ? 'inline-block' : '',
+                                            color: (verification === 'false' && choice.isCorrect === true) ? 'white' : ''
+                                        }
+                                    }>
+                                    check_circle_outline
+                                </span>
                             </div>
                         </div>
                     ))

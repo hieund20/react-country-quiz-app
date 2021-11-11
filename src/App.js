@@ -139,8 +139,6 @@ function App() {
   }
 
 
-  //Shuffle answer option before pass to child component
-
   return (
     <div className="app">
 
@@ -238,8 +236,10 @@ function App() {
         </Router >
       </div>
 
-      <div>
-        <span>created by username - devChallenges.io</span>
+      <div className="app-footer">
+        <span>
+          created by <a href="https://github.com/hieund20" target="_blank" rel="noreferrer">hieund</a> - devChallenges.io
+        </span>
       </div>
     </div>
   );
