@@ -2,7 +2,7 @@
     &.--capital {
         // border: 1px solid blue;
         width: 420px;
-        height: 400px;
+        min-height: 400px;
         margin: 0 auto;
     }
     &-text {
@@ -23,7 +23,7 @@
             border: 2px solid rgba(96, 102, 208, 0.7);
             box-sizing: border-box;
             border-radius: 12px;
-            height: 56px;
+            min-height: 56px;
 
             margin-bottom: 1.2rem;
             display: flex;
@@ -152,7 +152,7 @@
     &.--flag {
         // border: 1px solid blue;
         width: 420px;
-        height: 465px;
+        min-height: 465px;
         margin: 0 auto;
     }
     &-flag {
