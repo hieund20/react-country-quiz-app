@@ -6,6 +6,8 @@
         margin: 0 auto;
     }
     &-text {
+        border: 1px solid blue;
+        margin-top: 2.4rem;
         margin-bottom: 2rem;
         & > span {
             font-style: normal;
