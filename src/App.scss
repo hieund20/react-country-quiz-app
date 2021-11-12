@@ -47,6 +47,7 @@
         }
 
         &-menu {
+            //Don't remove border line
             border: 1px solid white;
             text-align: center;
             height: 400px;
@@ -78,7 +79,8 @@
             }
 
             & > div:nth-child(2) {
-                // border: 1px solid wheat;
+                //Don't remove border line
+                border: 1px solid wheat;
                 width: 90%;
                 background: #f9a826;
                 border-radius: 12px;
